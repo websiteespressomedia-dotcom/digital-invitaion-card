@@ -1,81 +1,88 @@
+/* ==========================================================================
+   App layout: page background, phone preview frame, status bar, caption.
+   (Component styles live next to each component.)
+   ========================================================================== */
+
+/* ---------- Page (desktop) ---------- */
 .experience-stage {
   position: relative;
   display: grid;
-  width: 100%;
   min-height: 100vh;
   min-height: 100svh;
   place-items: center;
   overflow: hidden;
-  isolation: isolate;
+  padding: 28px 16px 56px;
   background:
-    radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, .94) 0%, rgba(250, 246, 239, .78) 34%, transparent 68%),
-    linear-gradient(135deg, #eee4d7 0%, #faf7f1 48%, #e9ddcf 100%);
+    radial-gradient(ellipse at 50% 38%, #fffdf8 0%, transparent 62%),
+    linear-gradient(160deg, #f8f3eb 0%, #f1e9dd 55%, #ebe1d3 100%);
 }
 
 .ambient-glow {
   position: absolute;
-  z-index: -1;
-  width: min(76vw, 980px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(166, 133, 101, .12);
-  border-radius: 50%;
-  box-shadow: 0 0 0 34px rgba(255,255,255,.12), 0 0 0 72px rgba(166,133,101,.045);
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.85) 0%, transparent 46%),
+    radial-gradient(circle at 12% 88%, rgba(214, 190, 160, 0.22) 0%, transparent 38%),
+    radial-gradient(circle at 92% 12%, rgba(206, 222, 232, 0.28) 0%, transparent 36%);
 }
+
+/* two faint rings around the phone */
+.ambient-glow::before,
+.ambient-glow::after {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  border: 1px solid rgba(177, 142, 105, 0.16);
+  border-radius: 50%;
+  content: '';
+  transform: translate(-50%, -50%);
+}
+.ambient-glow::before { width: 96vmin; height: 96vmin; }
+.ambient-glow::after { width: 140vmin; height: 140vmin; border-color: rgba(177, 142, 105, 0.1); }
 
 .botanical-sprig {
   position: absolute;
-  z-index: -1;
-  width: clamp(170px, 22vw, 310px);
-  color: #b99c7e;
-  opacity: .56;
-  filter: drop-shadow(0 8px 12px rgba(117, 89, 64, .08));
+  width: clamp(120px, 16vw, 230px);
+  color: #b39a7c;
+  opacity: 0.55;
+  pointer-events: none;
 }
-
-.botanical-sprig--left {
-  left: max(-35px, 3vw);
-  bottom: -38px;
-  transform: rotate(-23deg);
-}
-
-.botanical-sprig--right {
-  right: max(-35px, 3vw);
-  top: -42px;
-  transform: rotate(158deg) scale(.92);
-}
+.botanical-sprig--left { bottom: 4vh; left: 3vw; }
+.botanical-sprig--right { top: 4vh; right: 3vw; transform: rotate(180deg); }
 
 .desktop-caption {
   position: absolute;
-  left: 50%;
-  bottom: 32px;
+  right: 0;
+  bottom: 14px;
+  left: 0;
   display: flex;
   align-items: center;
-  gap: 15px;
-  color: #a58b71;
-  font: 8px/1 Arial, sans-serif;
-  letter-spacing: .25em;
-  white-space: nowrap;
-  transform: translateX(-50%);
+  justify-content: center;
+  gap: 18px;
+  color: #a58a70;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-align: center;
+  pointer-events: none;
 }
+.desktop-caption__ornament { color: #b08b61; font-size: 11px; letter-spacing: 0; }
 
-.desktop-caption__ornament {
-  color: #b18b5e;
-  font-size: 12px;
-}
-
+/* ---------- Phone frame ---------- */
 .phone-shell {
   position: relative;
   z-index: 1;
-  width: min(390px, 88vw);
-  height: min(820px, calc(100svh - 72px));
-  min-height: 560px;
+  height: min(840px, calc(100svh - 84px));
+  max-width: 94vw;
+  aspect-ratio: 9 / 19.5;
   padding: 10px;
-  border: 1px solid rgba(255,255,255,.72);
   border-radius: 52px;
-  background: linear-gradient(145deg, #302521, #100e0d 55%, #514037);
+  background: linear-gradient(145deg, #3a2d29 0%, #1f1715 55%, #2f2420 100%);
   box-shadow:
-    0 34px 75px rgba(64, 45, 31, .24),
-    0 9px 22px rgba(64, 45, 31, .14),
-    inset 0 0 0 1px rgba(255,255,255,.22);
+    0 50px 90px rgba(70, 48, 31, 0.3),
+    0 18px 36px rgba(70, 48, 31, 0.2),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.07);
 }
 
 .phone-screen {
@@ -84,94 +91,83 @@
   height: 100%;
   overflow: hidden;
   border-radius: 42px;
-  background: #f6f0e7;
+  background: #f6f1e9;
   isolation: isolate;
+  transform: translateZ(0); /* keeps the rounded clip working with the 3D envelope */
 }
 
 .phone-status {
   position: absolute;
-  z-index: 20;
+  z-index: 30;
   top: 0;
+  right: 0;
   left: 0;
   display: flex;
-  width: 100%;
-  height: 27px;
+  height: 38px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 23px;
-  color: #57463a;
-  font: 9px/1 Arial, sans-serif;
+  padding: 6px 24px 0;
+  color: #46372f;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
   pointer-events: none;
 }
-
-.phone-status__symbols {
-  letter-spacing: 2px;
-}
+.phone-status__symbols { font-size: 7px; letter-spacing: 0.3em; }
 
 .phone-home-indicator {
   position: absolute;
-  z-index: 21;
-  bottom: 7px;
+  z-index: 31;
+  bottom: 8px;
   left: 50%;
-  width: 104px;
+  width: 118px;
   height: 4px;
-  border-radius: 10px;
-  background: rgba(65, 51, 42, .55);
-  transform: translateX(-50%);
+  border-radius: 4px;
+  background: rgba(70, 55, 47, 0.55);
   pointer-events: none;
+  transform: translateX(-50%);
 }
 
+/* ---------- Invitation page inside the phone ---------- */
 .invitation-page {
   position: relative;
   display: flex;
   width: 100%;
   height: 100%;
-  min-height: 0;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
-  padding: 52px 14px 27px;
+  padding: 52px 24px 34px;
   background:
-    radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.92), transparent 48%),
-    linear-gradient(145deg, #fbf8f2 0%, #eee5d9 100%);
+    radial-gradient(ellipse at 50% 18%, #fffdf8 0%, transparent 58%),
+    linear-gradient(180deg, #f8f3eb 0%, #efe6da 100%);
+  text-align: center;
 }
 
-.page-heading { text-align: center; }
-
+.page-heading { display: grid; justify-items: center; gap: 8px; }
 .page-heading__eyebrow {
-  color: #9a806a;
+  color: #a58a70;
   font-family: Arial, sans-serif;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: .25em;
+  font-size: 9px;
+  letter-spacing: 0.28em;
 }
-
 .page-heading__title {
-  margin: 7px 0 0;
-  color: #5b4538;
-  font-size: clamp(19px, 5vw, 25px);
+  margin: 0;
+  color: #4d3b31;
+  font-size: 24px;
   font-style: italic;
-  font-weight: 400;
 }
 
 .page-footer {
-  color: #a28d79;
+  color: #a58a70;
   font-family: Arial, sans-serif;
-  font-size: 7px;
-  letter-spacing: .22em;
+  font-size: 8px;
+  letter-spacing: 0.26em;
 }
 
-.page-footer span { padding-left: 5px; color: #b08a5b; }
-
+/* ---------- Real phones: fill the whole screen, no frame ---------- */
 @media (max-width: 600px) {
-  .experience-stage {
-    display: block;
-    min-height: 100vh;
-    min-height: 100svh;
-    background: #f6f0e7;
-  }
-
+  .experience-stage { display: block; padding: 0; background: #f6f1e9; }
   .ambient-glow,
   .botanical-sprig,
   .desktop-caption,
@@ -180,17 +176,59 @@
 
   .phone-shell {
     width: 100%;
+    max-width: none;
     height: 100vh;
     height: 100svh;
-    min-height: 0;
+    aspect-ratio: auto;
     padding: 0;
-    border: 0;
     border-radius: 0;
-    background: transparent;
+    background: none;
     box-shadow: none;
   }
-
   .phone-screen { border-radius: 0; }
+  .invitation-page { padding-top: 40px; }
+}
 
-  .invitation-page { padding-top: 30px; padding-bottom: 20px; }
+/* ---------- Opened: scrollable invitation ---------- */
+/* Once the envelope has opened, the phone screen becomes a scrollable
+   three-section invitation: Letter -> Countdown -> Scratch reveal. */
+.invitation-page--opened {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  scroll-snap-type: y proximity;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.invitation-page--opened::-webkit-scrollbar {
+  display: none;
+}
+
+.invitation-page--opened > .page-heading,
+.invitation-page--opened > .page-footer {
+  display: none;
+}
+
+.invitation-page--opened > .envelope-area--full,
+.invitation-page--opened > .countdown-section,
+.invitation-page--opened > .scratch-section {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+@media (max-width: 600px) {
+  .invitation-page--opened {
+    padding: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation-page--opened {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
 }

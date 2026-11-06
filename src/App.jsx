@@ -1,4 +1,10 @@
+import { useState } from 'react'
 import Envelope from './components/Envelope/Envelope.jsx'
+import CountDown from './components/CountDown/CountDown.jsx'
+import ScratchSection from './components/ScratchSection/ScratchSection.jsx'
+import Location from './components/Location/Location.jsx'
+import WeddingSchedule from './components/WeddingSchedule/WeddingSchedule.jsx'
+import { invitationConfig } from './data/invitationConfig.js'
 import './App.css'
 
 function BotanicalSprig({ className = '' }) {
@@ -17,6 +23,8 @@ function BotanicalSprig({ className = '' }) {
 }
 
 function App() {
+  const [invitationOpened, setInvitationOpened] = useState(false)
+
   return (
     <main className="experience-stage">
       <div className="ambient-glow" aria-hidden="true" />
@@ -35,18 +43,42 @@ function App() {
             <span>9:41</span>
             <span className="phone-status__symbols">● ▰ ▴</span>
           </div>
-          <div className="invitation-page">
+
+          <div className={`invitation-page ${invitationOpened ? 'invitation-page--opened' : ''}`}>
             <header className="page-heading">
               <span className="page-heading__eyebrow">A SPECIAL DELIVERY</span>
               <p className="page-heading__title">An invitation awaits</p>
             </header>
 
-            <Envelope />
+            {/* Change section order here whenever you want to rearrange the invitation. */}
+            <Envelope
+              groom={invitationConfig.groom}
+              bride={invitationConfig.bride}
+              weddingYear={invitationConfig.weddingYearLabel}
+              onComplete={() => setInvitationOpened(true)}
+            />
+
+            {invitationOpened && (
+              <>
+                <CountDown targetDate={invitationConfig.weddingDate} />
+                <ScratchSection
+                  imageSrc={invitationConfig.scratchImageUrl}
+                  imageAlt="A special wedding memory"
+                />
+                <Location
+                  venueName="Villa Aurelia"
+                  city="ROME, ITALY"
+                  mapsUrl="https://www.google.com/maps/place/%E0%A4%85%E0%A4%AE%E0%A5%8D%E0%A4%AC%E0%A4%BE%E0%A4%A8%E0%A5%80+%E0%A4%B9%E0%A4%BE%E0%A4%89%E0%A4%B8,+Antilia,+ANTILIA+APARTMENT,+SK+Barodawala+Marg,+near+Ashish+Parmar,+Tardeo,+Mumbai,+Maharashtra+400026/@18.9680259,72.8069214,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7ce740c73d241:0x2f342887d5ce589f!8m2!3d18.9680208!4d72.8094963!16s%2Fg%2F1q69sdkfd?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D"
+                />
+                <WeddingSchedule />
+              </>
+            )}
 
             <footer className="page-footer">
               MADE WITH LOVE <span aria-hidden="true">✦</span>
             </footer>
           </div>
+
           <div className="phone-home-indicator" aria-hidden="true" />
         </div>
       </div>

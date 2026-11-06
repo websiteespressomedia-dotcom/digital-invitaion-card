@@ -1,0 +1,341 @@
+.wedding-schedule {
+  --schedule-ink: #647486;
+  --schedule-muted: #8995a0;
+  --schedule-sage: #aebcaf;
+  --schedule-gold: #b69a76;
+  --schedule-line: rgba(163, 145, 119, 0.42);
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(28px, 5vh, 46px) 22px clamp(24px, 4vh, 36px);
+  color: var(--schedule-ink);
+  background:
+    radial-gradient(ellipse at 50% 8%, rgba(255, 255, 255, 0.98), transparent 54%),
+    radial-gradient(ellipse at 100% 88%, rgba(215, 224, 216, 0.38), transparent 48%),
+    linear-gradient(155deg, #fbf8f2 0%, #f3eee5 58%, #eae2d7 100%);
+  isolation: isolate;
+  scroll-snap-align: start;
+}
+
+.wedding-schedule::before {
+  position: absolute;
+  z-index: -1;
+  inset: 16px;
+  border: 1px solid rgba(177, 151, 119, 0.32);
+  content: '';
+  pointer-events: none;
+}
+
+.wedding-schedule::after {
+  position: absolute;
+  z-index: -1;
+  inset: 23px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  content: '';
+  pointer-events: none;
+}
+
+.wedding-schedule__inner {
+  display: flex;
+  width: min(100%, 340px);
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(14px, 2.8vh, 24px);
+}
+
+.wedding-schedule__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wedding-schedule__eyebrow {
+  margin: 0 0 9px;
+  color: #a58a70;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}
+
+.wedding-schedule__title {
+  margin: 0;
+  color: #627386;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(29px, 7.8vw, 39px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.wedding-schedule__subtitle {
+  max-width: 250px;
+  margin: 9px 0 5px;
+  color: var(--schedule-muted);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.schedule-ornament {
+  display: block;
+  width: 104px;
+  height: 36px;
+  color: var(--schedule-gold);
+}
+
+.wedding-schedule__list {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.wedding-schedule__timeline {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  left: 59px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(166, 148, 122, 0.68) 9%,
+    rgba(166, 148, 122, 0.68) 91%,
+    transparent
+  );
+  transform-origin: top center;
+}
+
+.wedding-event {
+  position: relative;
+  display: grid;
+  min-height: 72px;
+  grid-template-columns: 59px minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+}
+
+.wedding-event__time {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-right: 7px;
+  color: #78899a;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.wedding-event__time small {
+  margin-top: 4px;
+  color: #a18f7a;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.17em;
+}
+
+.wedding-event__node {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(161, 132, 99, 0.8);
+  border-radius: 50%;
+  background: #f8f4ec;
+  box-shadow:
+    0 0 0 4px rgba(248, 244, 236, 0.88),
+    inset 0 0 0 2px rgba(185, 159, 124, 0.24);
+  transform: translateY(-50%);
+}
+
+.wedding-event__card {
+  position: relative;
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 25px 11px 12px;
+  border: 1px solid rgba(177, 151, 119, 0.27);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(249, 245, 237, 0.58));
+  box-shadow:
+    0 5px 15px rgba(83, 69, 53, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.wedding-event__card::before {
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #c5b096, #aebcaf);
+  content: '';
+}
+
+.wedding-event__card:hover {
+  border-color: rgba(163, 145, 119, 0.5);
+  box-shadow: 0 9px 20px rgba(83, 69, 53, 0.09);
+  transform: translateY(-2px);
+}
+
+.wedding-event__number {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  place-items: center;
+  border: 1px solid rgba(177, 151, 119, 0.42);
+  border-radius: 50%;
+  color: #a78d6b;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 9px;
+  font-style: italic;
+}
+
+.wedding-event__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.wedding-event__title {
+  margin: 0 0 4px;
+  color: #687b8c;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1.2;
+}
+
+.wedding-event__description {
+  margin: 0;
+  color: #929ba2;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.wedding-event__sparkle {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: rgba(180, 151, 113, 0.7);
+  font-size: 9px;
+}
+
+.wedding-schedule__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.wedding-schedule__footer .schedule-ornament {
+  width: 88px;
+  height: 27px;
+}
+
+.wedding-schedule__footer p {
+  margin: 0;
+  color: #a18b75;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+@media (max-height: 700px) {
+  .wedding-schedule {
+    padding-top: 22px;
+    padding-bottom: 20px;
+  }
+
+  .wedding-schedule__inner {
+    gap: 10px;
+  }
+
+  .wedding-schedule__subtitle {
+    margin-top: 6px;
+  }
+
+  .wedding-schedule__list {
+    gap: 4px;
+  }
+
+  .wedding-event {
+    min-height: 62px;
+  }
+
+  .wedding-event__card {
+    min-height: 58px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .wedding-event__description {
+    font-size: 7px;
+  }
+
+  .wedding-schedule__footer .schedule-ornament {
+    height: 22px;
+  }
+}
+
+@media (max-width: 350px) {
+  .wedding-schedule {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .wedding-event {
+    grid-template-columns: 55px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .wedding-schedule__timeline {
+    left: 55px;
+  }
+
+  .wedding-event__time {
+    font-size: 11px;
+  }
+
+  .wedding-event__card {
+    gap: 7px;
+    padding-right: 18px;
+    padding-left: 9px;
+  }
+
+  .wedding-event__description {
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-event__card {
+    transition: none;
+  }
+}

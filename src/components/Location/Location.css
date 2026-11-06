@@ -1,0 +1,231 @@
+.location-section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 38px 25px 30px;
+  color: #5f6d7b;
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(255, 255, 255, 0.97), transparent 55%),
+    radial-gradient(ellipse at 4% 88%, rgba(239, 220, 213, 0.28), transparent 48%),
+    linear-gradient(155deg, #fbf8f2 0%, #f5f0e8 58%, #eee5da 100%);
+  isolation: isolate;
+  scroll-snap-align: start;
+}
+
+.location-section__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 310px);
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 12px;
+  text-align: center;
+}
+
+.location-section__crest {
+  display: grid;
+  width: 48px;
+  height: 42px;
+  place-items: center;
+  color: #b18b62;
+  opacity: 0.9;
+}
+
+.location-section__crest svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.location-section__eyebrow {
+  margin: 0;
+  color: #a58b73;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+}
+
+.location-section__title {
+  margin: -4px 0 0;
+  color: #5e6c7b;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(32px, 8vw, 40px);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.location-section__venue {
+  margin: 2px 0 -7px;
+  color: #728094;
+  font-family: 'URW Chancery L', 'Apple Chancery', 'Brush Script MT', cursive;
+  font-size: clamp(25px, 7vw, 33px);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.location-section__city {
+  margin: 0;
+  color: #8997a5;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+}
+
+.location-section__copy {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0 0;
+  color: #8793a0;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+.location-section__copy p {
+  margin: 0;
+}
+
+.location-section__image-wrap {
+  display: grid;
+  width: min(100%, 285px);
+  height: clamp(150px, 24vh, 205px);
+  place-items: center;
+  margin: 3px 0 1px;
+}
+
+.location-section__venue-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: saturate(0.68) contrast(0.94);
+  mix-blend-mode: multiply;
+}
+
+.location__villa-illustration {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: saturate(0.72);
+}
+
+.location-section__directions {
+  position: relative;
+  display: flex;
+  width: min(100%, 208px);
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 2px 0 0;
+  border: 1px solid rgba(124, 139, 151, 0.62);
+  outline: 1px solid rgba(124, 139, 151, 0.24);
+  outline-offset: 4px;
+  background: rgba(255, 255, 255, 0.26);
+  color: #7b8998;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-decoration: none;
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.location-section__directions:hover {
+  border-color: #8999a7;
+  background: rgba(255, 255, 255, 0.62);
+  color: #536475;
+  transform: translateY(-2px);
+}
+
+.location-section__directions:active {
+  transform: translateY(0);
+}
+
+.location-section__directions:focus-visible {
+  outline: 2px solid #718395;
+  outline-offset: 5px;
+}
+
+.location-section__arrow {
+  position: absolute;
+  right: 15px;
+  font-size: 13px;
+  letter-spacing: 0;
+  opacity: 0.72;
+}
+
+.location-section__divider {
+  width: min(100%, 155px);
+  margin: 5px 0 0;
+  opacity: 0.76;
+}
+
+.location-section__footer {
+  margin: 0;
+  color: #a38d78;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  letter-spacing: 0.2em;
+}
+
+@media (max-height: 700px) {
+  .location-section {
+    padding-top: 25px;
+    padding-bottom: 22px;
+  }
+
+  .location-section__content {
+    gap: 8px;
+  }
+
+  .location-section__copy {
+    gap: 8px;
+    margin-top: 5px;
+    font-size: 8px;
+  }
+
+  .location-section__image-wrap {
+    height: clamp(125px, 21vh, 165px);
+  }
+}
+
+@media (max-width: 350px) {
+  .location-section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .location-section__copy {
+    font-size: 8px;
+  }
+
+  .location-section__image-wrap {
+    height: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location-section__directions {
+    transition: none;
+  }
+}
