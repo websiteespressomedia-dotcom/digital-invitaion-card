@@ -21,6 +21,7 @@ const SEAL_TEXT = '&'
 */
 function Envelope({
   onComplete,
+  onOpen,
   groom = { first: 'Uday', last: 'Shetty' },
   bride = { first: 'Ananya', last: 'Rao' },
   weddingYear = '2026',
@@ -40,10 +41,18 @@ function Envelope({
   const startedRef = useRef(false)
   const onCompleteRef = useRef(onComplete)
   onCompleteRef.current = onComplete
+  const onOpenRef = useRef(onOpen)
+  onOpenRef.current = onOpen
 
   const handleOpen = () => {
     if (startedRef.current) return
     startedRef.current = true
+
+    // Start global background music from the actual envelope tap.
+    // Keep this call before the React state update so browsers recognise
+    // it as part of the user's interaction.
+    onOpenRef.current?.()
+
     setIsOpened(true)
   }
 

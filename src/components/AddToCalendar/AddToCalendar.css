@@ -1,0 +1,321 @@
+
+/* =====================================
+   ADD TO CALENDAR SECTION
+===================================== */
+
+.add-calendar-section {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  padding: 35px 22px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+
+  color: #657b91;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 20%,
+      rgba(255, 255, 255, 0.9),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      #faf7f2,
+      #f0e8df
+    );
+}
+
+/* =====================================
+   DECORATIVE BACKGROUND
+===================================== */
+
+.calendar-orbit {
+  position: absolute;
+  border: 1px solid rgba(190, 160, 125, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.calendar-orbit-one {
+  width: 300px;
+  height: 300px;
+  top: -170px;
+  left: -130px;
+}
+
+.calendar-orbit-two {
+  width: 260px;
+  height: 260px;
+  bottom: -165px;
+  right: -120px;
+}
+
+/* =====================================
+   CONTENT ANIMATION
+===================================== */
+
+.calendar-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.calendar-visible .calendar-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================
+   HEADING
+===================================== */
+
+.calendar-emblem {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(190, 160, 125, 0.5);
+  border-radius: 50%;
+
+  color: #b99a73;
+  font-size: 18px;
+
+  animation: calendarFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes calendarFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.calendar-eyebrow {
+  margin: 0 0 7px;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+
+  color: #a58a70;
+}
+
+.calendar-heading {
+  margin: 0 0 10px;
+
+  font-family: Georgia, serif;
+  font-size: clamp(27px, 7vw, 34px);
+  font-weight: 400;
+  font-style: italic;
+
+  color: #526b83;
+}
+
+.calendar-description {
+  max-width: 300px;
+  margin: 0 auto 19px;
+
+  font-family: Georgia, serif;
+  font-size: 12px;
+  line-height: 1.75;
+
+  color: #8492a0;
+}
+
+/* =====================================
+   EVENT DETAILS
+===================================== */
+
+.calendar-event-details {
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 12px 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  text-align: left;
+
+  background: rgba(255, 255, 255, 0.38);
+  border-top: 1px solid #dfcdb9;
+  border-bottom: 1px solid #dfcdb9;
+}
+
+.calendar-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar-detail-icon {
+  flex-shrink: 0;
+
+  width: 29px;
+  height: 29px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #d8c4ac;
+  border-radius: 50%;
+
+  color: #71869b;
+  font-size: 15px;
+}
+
+.calendar-detail div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.calendar-detail-label {
+  font-size: 7px;
+  letter-spacing: 1.8px;
+  color: #a58a70;
+  font-weight: 600;
+}
+
+.calendar-detail strong {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #657b91;
+}
+
+/* =====================================
+   CALENDAR BUTTON
+===================================== */
+
+.calendar-add-button {
+  position: relative;
+
+  width: 100%;
+  max-width: 260px;
+  min-height: 46px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+
+  border: 1px solid #74869a;
+  background: #657b91;
+  color: #fff;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 14px rgba(70, 85, 105, 0.1);
+
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.calendar-add-button:hover {
+  background: #4e657d;
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 22px rgba(70, 85, 105, 0.2);
+}
+
+.calendar-button-icon {
+  font-size: 16px;
+}
+
+.calendar-button-arrow {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.calendar-add-button:hover .calendar-button-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.calendar-footer {
+  margin: 19px 0 0;
+
+  font-size: 7px;
+  letter-spacing: 2px;
+
+  color: #a58a70;
+}
+
+.calendar-footer span {
+  margin-left: 5px;
+  color: #b99a73;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 380px) {
+  .add-calendar-section {
+    padding: 28px 17px 25px;
+  }
+
+  .calendar-description {
+    font-size: 11px;
+  }
+
+  .calendar-event-details {
+    padding: 10px;
+    gap: 9px;
+  }
+
+  .calendar-detail strong {
+    font-size: 11px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .calendar-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .calendar-emblem {
+    animation: none;
+  }
+
+  .calendar-add-button {
+    transition: none;
+  }
+}

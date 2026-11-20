@@ -198,6 +198,8 @@
   overflow-y: auto;
   padding: 0;
   scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  scroll-padding-block: 10px;
   overscroll-behavior-y: contain;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -213,11 +215,18 @@
 }
 
 .invitation-page--opened > .envelope-area--full,
-.invitation-page--opened > .countdown-section,
 .invitation-page--opened > .scratch-section {
   width: 100%;
   height: 100%;
   min-height: 100%;
+}
+
+/* Countdown is a short interlude, not a full-screen page. */
+.invitation-page--opened > .countdown-section.card-page {
+  width: 100%;
+  height: auto;
+  min-height: 370px;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 600px) {
@@ -230,5 +239,79 @@
   .invitation-page--opened {
     scroll-behavior: auto;
     scroll-snap-type: none;
+  }
+}
+
+
+/* ---------- Persistent invitation soundtrack control ---------- */
+.music-toggle {
+  position: absolute;
+  z-index: 60;
+  right: 20px;
+  bottom: 24px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(116, 134, 154, .42);
+  border-radius: 50%;
+  background: rgba(250, 247, 241, .9);
+  color: #687f96;
+  box-shadow:
+    0 4px 13px rgba(54, 47, 40, .12),
+    inset 0 1px 0 rgba(255, 255, 255, .85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    color .25s ease;
+}
+
+.music-toggle svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+.music-toggle:hover {
+  transform: translateY(-2px);
+  background: #fffdf8;
+  box-shadow: 0 6px 16px rgba(54, 47, 40, .16);
+}
+
+.music-toggle:active {
+  transform: scale(.94);
+}
+
+.music-toggle.is-muted {
+  color: #9a8d80;
+}
+
+.music-toggle.is-playing {
+  color: #5e7892;
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid #8fa2b3;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .music-toggle {
+    right: 17px;
+    bottom: 26px;
+    width: 39px;
+    height: 39px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-toggle {
+    transition: none;
   }
 }

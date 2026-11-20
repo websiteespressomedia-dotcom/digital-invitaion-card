@@ -1,86 +1,142 @@
-/* Champagne page with an arched panel; ivory text. Shared frame/florals come from Ornaments.css */
-.countdown-section {
-  --line: rgba(255, 248, 235, 0.7);
-  --line-soft: rgba(255, 248, 235, 0.3);
-  --flora: #f6ead0;
-  color: #fbf6ec;
+/* Compact pearl-and-slate countdown. The shared fine frame comes from Ornaments.css. */
+.countdown-section.card-page {
+  --line: rgba(151, 169, 184, .58);
+  --line-soft: rgba(151, 169, 184, .24);
+  --flora: #aab8c1;
+
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 370px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 22px;
+  color: #647b91;
   background:
-    radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.42), transparent 55%),
-    radial-gradient(ellipse at 92% 92%, rgba(255, 238, 214, 0.22), transparent 48%),
-    linear-gradient(160deg, #cfbea5 0%, #b79f81 52%, #9d8567 100%);
+    radial-gradient(ellipse at 50% 8%, rgba(255,255,255,.98), transparent 58%),
+    radial-gradient(ellipse at 95% 100%, rgba(215,225,230,.34), transparent 46%),
+    linear-gradient(155deg, #fbf8f2 0%, #f0eee8 54%, #e8ecec 100%);
 }
 
-.countdown-section__heading { display: grid; justify-items: center; gap: 6px; }
+.countdown-section__arch {
+  display: flex;
+  width: min(100%, 292px);
+  min-height: 326px;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  padding: 25px 15px 23px;
+  border: 1px solid rgba(151, 169, 184, .52);
+  border-radius: 999px 999px 7px 7px;
+  outline: 1px solid rgba(151, 169, 184, .2);
+  outline-offset: 4px;
+  text-align: center;
+}
+
+.countdown-section__heading {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
 
 .countdown-section__eyebrow {
   margin: 0;
-  font-family: Arial, sans-serif;
-  font-size: 8px;
+  color: #a58a70;
+  font-family: var(--font-body, Arial, sans-serif);
+  font-size: 7px;
   font-weight: 600;
-  letter-spacing: 0.26em;
-  color: rgba(255, 250, 240, 0.85);
+  letter-spacing: .24em;
 }
 
 .countdown-section__title {
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(36px, 10.5vw, 46px);
+  color: #60768d;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: clamp(32px, 8.8vw, 39px);
   font-style: italic;
   font-weight: 400;
-  line-height: 1.1;
-  text-shadow: 0 1px 8px rgba(80, 58, 36, 0.25);
+  line-height: 1.08;
 }
 
 .countdown-section__subtitle {
   max-width: 220px;
-  margin: 2px 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 13px;
+  margin: 1px 0 0;
+  color: #8794a0;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: 11px;
   font-style: italic;
-  line-height: 1.6;
-  color: rgba(255, 250, 240, 0.9);
+  line-height: 1.55;
 }
 
-/* four small arched tiles */
 .countdown-clock {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
 }
 
 .countdown-clock__unit {
   display: grid;
+  min-width: 0;
   justify-items: center;
-  gap: 4px;
-  padding: 16px 0 10px;
-  border: 1px solid rgba(255, 248, 235, 0.75);
+  gap: 5px;
+  padding: 13px 1px 10px;
+  border: 1px solid rgba(151, 169, 184, .55);
   border-radius: 999px 999px 6px 6px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12));
-  box-shadow: 0 8px 18px rgba(80, 58, 36, 0.14);
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(230,236,237,.7));
+  box-shadow: 0 5px 13px rgba(74, 91, 106, .08);
 }
 
 .countdown-clock__number {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(22px, 6.6vw, 28px);
+  color: #60768d;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: clamp(21px, 5.9vw, 26px);
   line-height: 1;
-  color: #fffaf0;
   font-variant-numeric: tabular-nums;
 }
 
 .countdown-clock__label {
-  font-family: Arial, sans-serif;
-  font-size: 6.5px;
-  letter-spacing: 0.16em;
+  color: #8997a2;
+  font-family: var(--font-body, Arial, sans-serif);
+  font-size: 6px;
+  letter-spacing: .11em;
   text-transform: uppercase;
-  color: rgba(255, 250, 240, 0.85);
 }
 
 .countdown-section__message {
   max-width: 220px;
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 15px;
+  color: #7d8da0;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: 12px;
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
+}
+
+@media (max-width: 360px) {
+  .countdown-section.card-page {
+    min-height: 350px;
+    padding: 17px 17px 19px;
+  }
+
+  .countdown-section__arch {
+    min-height: 310px;
+    gap: 14px;
+    padding: 22px 12px 20px;
+  }
+
+  .countdown-clock {
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-section,
+  .countdown-clock__unit {
+    scroll-behavior: auto;
+    transition: none;
+  }
 }

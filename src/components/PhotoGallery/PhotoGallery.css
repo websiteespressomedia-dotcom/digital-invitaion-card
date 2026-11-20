@@ -1,0 +1,511 @@
+
+/* ================================
+   PHOTO GALLERY
+================================ */
+
+.photo-gallery {
+  position: relative;
+  width: 100%;
+  padding: 34px 16px 24px;
+  overflow: hidden;
+  color: #5b7692;
+  background: transparent;
+}
+
+.photo-gallery__inner {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.photo-gallery__header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.photo-gallery__eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #a58a68;
+  margin-bottom: 10px;
+}
+
+.photo-gallery__title {
+  font-family: inherit;
+  font-size: clamp(30px, 8vw, 40px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  color: #5b7692;
+}
+
+.photo-gallery__intro {
+  font-size: 12px;
+  line-height: 1.8;
+  max-width: 320px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+/* ================================
+   FEATURED IMAGE STAGE
+================================ */
+
+.photo-gallery__stage {
+  width: 100%;
+}
+
+.photo-gallery__featured {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: min(68vh, 520px);
+  min-height: 340px;
+  overflow: hidden;
+  border: 1px solid rgba(190, 163, 126, 0.65);
+  background: #e9e2d7;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(65, 49, 36, 0.08);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.photo-gallery__featured:focus-visible {
+  outline: 2px solid #7890a5;
+  outline-offset: 3px;
+}
+
+/* Slide stack */
+
+.photo-gallery__slide {
+  position: absolute;
+  inset: 5px;
+  opacity: 0;
+  transform: scale(1.035);
+  transition:
+    opacity 1s ease,
+    transform 3.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+  pointer-events: none;
+}
+
+.photo-gallery__slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.photo-gallery__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-gallery__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 30, 37, 0.03) 40%,
+    rgba(24, 30, 37, 0.42) 100%
+  );
+}
+
+/* ================================
+   FEATURED IMAGE LABELS
+================================ */
+
+.photo-gallery__featured-label {
+  position: absolute;
+  z-index: 5;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.photo-gallery__label-line {
+  width: 26px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.photo-gallery__expand {
+  position: absolute;
+  z-index: 5;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  pointer-events: none;
+}
+
+.photo-gallery__expand-icon {
+  font-size: 14px;
+}
+
+/* ================================
+   CAPTION
+================================ */
+
+.photo-gallery__caption-area {
+  text-align: center;
+  padding: 15px 8px 8px;
+  min-height: 42px;
+}
+
+.photo-gallery__caption {
+  margin: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-style: italic;
+  color: #5b7692;
+}
+
+.photo-gallery__date {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  margin-top: 7px;
+  color: #a58a68;
+}
+
+/* ================================
+   PAGINATION
+================================ */
+
+.photo-gallery__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin: 13px 0 18px;
+}
+
+.photo-gallery__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(91, 118, 146, 0.28);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.photo-gallery__dot.is-active {
+  width: 23px;
+  border-radius: 10px;
+  background: #5b7692;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.photo-gallery__footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 0;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: #a58a68;
+}
+
+.photo-gallery__footer i {
+  font-style: normal;
+}
+
+/* ================================
+   FULL PHONE-SCREEN VIEWER
+   The JSX portals this overlay into .phone-screen.
+================================ */
+
+.photo-gallery__viewer {
+  position: absolute;
+  inset: 0;
+  z-index: 99999;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: #24384b;
+  color: #f7f1e8;
+  box-shadow: none;
+  animation: galleryViewerFadeIn 280ms ease both;
+  isolation: isolate;
+}
+
+.photo-gallery__viewer-shell {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 35%, rgba(255,255,255,.045), transparent 58%),
+    #24384b;
+}
+
+@keyframes galleryViewerFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.photo-gallery__viewer-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:
+    max(15px, env(safe-area-inset-top))
+    17px
+    12px;
+  pointer-events: none;
+}
+
+.photo-gallery__viewer-counter {
+  color: rgba(255,255,255,.9);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+
+.photo-gallery__viewer-counter span {
+  opacity: .48;
+}
+
+.photo-gallery__viewer-close {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  place-items: center;
+  padding: 0 0 3px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 50%;
+  background: rgba(16,29,42,.48);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(7px);
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+.photo-gallery__viewer-close:hover {
+  background: rgba(255,255,255,.2);
+  transform: rotate(90deg);
+}
+
+.photo-gallery__viewer-close:focus-visible,
+.photo-gallery__viewer-controls button:focus-visible,
+.photo-gallery__viewer-dots button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.photo-gallery__viewer-image {
+  position: absolute;
+  inset: 48px 0 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 8px 10px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.photo-gallery__viewer-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  animation: galleryImageEnter 420ms ease both;
+}
+
+@keyframes galleryImageEnter {
+  from { opacity: 0; transform: scale(.975); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.photo-gallery__viewer-controls {
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 11px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.photo-gallery__viewer-controls button {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  padding: 0 0 3px;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: 50%;
+  background: rgba(20,30,40,.48);
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+  transition: background 220ms ease;
+}
+
+.photo-gallery__viewer-controls button:hover {
+  background: rgba(255,255,255,.2);
+}
+
+.photo-gallery__viewer-caption {
+  position: absolute;
+  right: 15px;
+  bottom: calc(48px + env(safe-area-inset-bottom));
+  left: 15px;
+  z-index: 7;
+  text-align: center;
+  pointer-events: none;
+}
+
+.photo-gallery__viewer-caption p {
+  margin: 0;
+  color: #f7f1e8;
+  font-family: inherit;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.photo-gallery__viewer-caption span {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255,255,255,.7);
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+
+.photo-gallery__viewer-dots {
+  position: absolute;
+  right: 0;
+  bottom: calc(23px + env(safe-area-inset-bottom));
+  left: 0;
+  z-index: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.photo-gallery__viewer-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255,255,255,.42);
+  cursor: pointer;
+  transition: width 250ms ease, background 250ms ease;
+}
+
+.photo-gallery__viewer-dots button.is-active {
+  width: 22px;
+  background: #fff;
+}
+
+.photo-gallery__empty {
+  padding: 40px 15px;
+  color: #a58a68;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 380px) {
+  .photo-gallery__viewer-image {
+    inset: 45px 0 98px;
+    padding: 7px;
+  }
+
+  .photo-gallery__viewer-controls {
+    padding: 0 8px;
+  }
+
+  .photo-gallery__viewer-controls button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .photo-gallery__viewer-caption p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-gallery__viewer,
+  .photo-gallery__viewer-image img {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .photo-gallery__viewer-close,
+  .photo-gallery__viewer-controls button,
+  .photo-gallery__viewer-dots button {
+    transition: none !important;
+  }
+}

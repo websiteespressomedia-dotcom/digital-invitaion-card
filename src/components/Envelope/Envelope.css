@@ -379,7 +379,7 @@
   top: 50%;
   left: 50%;
   color: rgba(176, 139, 97, 0.09);
-  content: '&';
+  content: 'S&A';
   font: italic 230px/1 Georgia, serif;
   pointer-events: none;
   transform: translate(-50%, -52%);

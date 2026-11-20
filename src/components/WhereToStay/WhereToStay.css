@@ -1,0 +1,438 @@
+/* WHERE TO STAY — ornamental hotel stationery cards with generous breathing room. */
+
+.where-to-stay.card-page {
+  --stay-ink: #687d92;
+  --stay-muted: #8b96a1;
+  --stay-gold: #bda184;
+
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  flex: 0 0 auto;
+  align-self: stretch;
+  overflow: visible;
+  padding: 24px 16px 30px;
+  color: var(--stay-ink);
+  background:
+    radial-gradient(ellipse at 12% 8%, rgba(255,255,255,.96), transparent 38%),
+    radial-gradient(ellipse at 90% 76%, rgba(226,218,207,.25), transparent 45%),
+    linear-gradient(150deg, #fbf8f2 0%, #f4eee7 58%, #eee7df 100%);
+  isolation: isolate;
+  scroll-snap-align: start;
+}
+
+.where-to-stay__paper-glow {
+  position: absolute;
+  z-index: -1;
+  inset: -8%;
+  background:
+    radial-gradient(ellipse at 18% 26%, rgba(255,255,255,.4), transparent 33%),
+    radial-gradient(ellipse at 84% 66%, rgba(215,225,229,.16), transparent 37%);
+  pointer-events: none;
+}
+
+/* Shared section sheet: title and all hotel cards belong to one composition. */
+.where-to-stay__sheet {
+  position: relative;
+  display: flex;
+  width: min(100%, 360px);
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 17px 13px 18px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.78), transparent 60%),
+    rgba(250,247,241,.42);
+}
+
+/* Heading: clear, centred and close to the top of the section. */
+.where-to-stay__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 7px 0;
+  text-align: center;
+}
+
+.where-to-stay__eyebrow {
+  margin: 0 0 6px;
+  color: #a58d75;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .28em;
+}
+
+.where-to-stay__title {
+  margin: 0;
+  color: #667d94;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: clamp(37px, 9.5vw, 45px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  text-align: center;
+}
+
+.where-to-stay__intro {
+  max-width: 285px;
+  margin: 10px 0 0;
+  color: #89939d;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.where-to-stay__divider {
+  display: flex;
+  width: min(100%, 190px);
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 17px;
+  color: #b79a78;
+}
+
+.where-to-stay__divider span {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(185,154,114,.7));
+}
+
+.where-to-stay__divider span:last-child {
+  transform: rotate(180deg);
+}
+
+.where-to-stay__divider i {
+  font-size: 9px;
+  font-style: normal;
+}
+
+/* Hotel cards: clipped corners, a fine double-line stationery border and open spacing. */
+.where-to-stay__hotels {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.stay-panel {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 23px 17px 22px;
+  background:
+    radial-gradient(ellipse at 50% 5%, rgba(255,255,255,.7), transparent 58%),
+    linear-gradient(145deg, #f8eff0 0%, #f5ebeb 58%, #f2e8e8 100%);
+  text-align: center;
+  isolation: isolate;
+}
+
+/* Outer cut-corner frame */
+.stay-panel__frame {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 1px solid rgba(179,148,145,.62);
+  /* clip-path: polygon(
+    0 5%, 5% 0, 95% 0, 100% 5%,
+    100% 95%, 95% 100%, 5% 100%, 0 95%
+  ); */
+  pointer-events: none;
+}
+
+/* Inner cut-corner rule */
+.stay-panel__frame::after {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(190,164,158,.46);
+  clip-path: polygon(
+    0 5%, 5% 0, 95% 0, 100% 5%,
+    100% 95%, 95% 100%, 5% 100%, 0 95%
+  );
+  content: '';
+}
+
+/* Card top line and sequence number */
+.stay-panel__topline {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  color: #a58d78;
+  font-family: Arial, sans-serif;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: .22em;
+}
+
+.stay-panel__index {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid rgba(178,148,128,.6);
+  border-radius: 50%;
+  color: #9a8068;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10px;
+  font-style: italic;
+}
+
+/* Floral ornament and centre medallion */
+.stay-panel__ornament {
+  display: block;
+  width: min(100%, 260px);
+  height: 68px;
+  margin: 9px auto 1px;
+  overflow: visible;
+  color: #c0a58c;
+}
+
+.stay-panel__area {
+  margin: 2px 0 6px;
+  color: #a58a71;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .22em;
+}
+
+.stay-panel__name {
+  max-width: 260px;
+  margin: 0;
+  color: #687f96;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(23px, 6vw, 28px);
+  font-weight: 400;
+  line-height: 1.23;
+}
+
+/* Each fact has enough vertical breathing room. */
+.stay-panel__details {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(174,150,129,.32);
+  border-bottom: 1px solid rgba(174,150,129,.32);
+}
+
+.stay-panel__detail {
+  display: grid;
+  gap: 4px;
+}
+
+.stay-panel__detail span {
+  color: #a58c76;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .19em;
+}
+
+.stay-panel__detail strong {
+  color: #89939e;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.stay-panel__description {
+  max-width: 265px;
+  margin: 16px 0 18px;
+  color: #89939e;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11px;
+  line-height: 1.72;
+}
+
+/* Booking action: text remains fully visible and the button has room around it. */
+.stay-panel__booking {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  width: min(100%, 190px);
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2px;
+  padding: 10px 14px;
+  border: 1px solid rgba(139,123,120,.7);
+  border-radius: 24px;
+  background: rgba(255,255,255,.27);
+  color: #745f5a;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .17em;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition:
+    background 280ms ease,
+    color 280ms ease,
+    border-color 280ms ease,
+    transform 280ms ease,
+    box-shadow 280ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stay-panel__booking svg {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  transition: transform 280ms ease;
+}
+
+.stay-panel__booking:hover:not(.stay-panel__booking--pending) {
+  border-color: #9b817b;
+  background: rgba(255,255,255,.68);
+  color: #5e4d49;
+  box-shadow: 0 5px 13px rgba(112,88,82,.09);
+  transform: translateY(-2px);
+}
+
+.stay-panel__booking:hover svg {
+  transform: translate(2px,-2px);
+}
+
+.stay-panel__booking--pending {
+  color: #927a72;
+  border-color: rgba(171,144,135,.58);
+  background: rgba(255,255,255,.27);
+  opacity: 1;
+  /* cursor: not-allowed; */
+}
+
+.stay-panel__booking:disabled {
+  opacity: 1;
+}
+
+.stay-panel__booking:focus-visible {
+  outline: 2px solid #9b817b;
+  outline-offset: 4px;
+}
+
+/* End note */
+.where-to-stay__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 21px 4px 2px;
+  color: #a18b78;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .19em;
+  text-align: center;
+}
+
+.where-to-stay__footer i {
+  color: #b99b77;
+  font-size: 9px;
+  font-style: normal;
+}
+
+@media (max-width: 380px) {
+  .where-to-stay.card-page {
+    padding: 19px 13px 25px;
+  }
+
+  .where-to-stay__sheet {
+    padding: 14px 8px 16px;
+  }
+
+  .where-to-stay__title {
+    font-size: 38px;
+  }
+
+  .where-to-stay__intro {
+    max-width: 270px;
+    font-size: 10px;
+  }
+
+  .where-to-stay__hotels {
+    gap: 20px;
+  }
+
+  .stay-panel {
+    padding: 20px 14px 19px;
+  }
+
+  .stay-panel__ornament {
+    height: 63px;
+    margin-top: 7px;
+  }
+
+  .stay-panel__name {
+    font-size: 24px;
+  }
+
+  .stay-panel__details {
+    gap: 11px;
+    margin-top: 14px;
+    padding: 12px 0;
+  }
+
+  .stay-panel__description {
+    margin-top: 14px;
+    margin-bottom: 16px;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+
+  .stay-panel__booking {
+    width: min(100%, 184px);
+    min-height: 40px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 340px) {
+  .where-to-stay.card-page {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .stay-panel {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .stay-panel__name {
+    font-size: 22px;
+  }
+
+  .stay-panel__booking {
+    width: min(100%, 176px);
+    letter-spacing: .13em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stay-panel__booking,
+  .stay-panel__booking svg {
+    transition: none;
+  }
+}

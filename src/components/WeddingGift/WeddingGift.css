@@ -1,0 +1,534 @@
+
+/* ================================
+   MAIN WEDDING GIFT SECTION
+================================ */
+
+.wedding-gift {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  padding: 65px 22px 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #657b91;
+  background: linear-gradient(
+    180deg,
+    #faf7f2,
+    #f0e8df
+  );
+  overflow: hidden;
+}
+
+.gift-main-content {
+  width: 100%;
+  max-width: 390px;
+  margin: auto;
+  animation: giftContentAppear 1s ease both;
+}
+
+@keyframes giftContentAppear {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gift-decoration {
+  color: #b99a73;
+  font-size: 32px;
+  margin-bottom: 17px;
+}
+
+.gift-eyebrow {
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: #a58a70;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.wedding-gift h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 9vw, 42px);
+  font-weight: 400;
+  font-style: italic;
+  color: #526b83;
+  margin: 10px 0 16px;
+}
+
+.gift-message {
+  max-width: 310px;
+  margin: 0 auto 32px;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #8492a0;
+}
+
+/* Main Button */
+
+.gift-open-button {
+  width: 100%;
+  max-width: 275px;
+  min-height: 54px;
+  padding: 0 22px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid #74869a;
+  background: #657b91;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.gift-open-button:hover {
+  background: #4e657d;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(70, 85, 105, 0.18);
+}
+
+.gift-button-arrow {
+  font-size: 15px;
+  transition: transform 0.35s ease;
+}
+
+.gift-open-button:hover .gift-button-arrow {
+  transform: translate(3px, -3px);
+}
+
+.gift-footer {
+  margin: 48px 0 0;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #a58a70;
+}
+
+.gift-footer span {
+  color: #b99a73;
+  margin-left: 5px;
+}
+
+
+/* ================================
+   POPUP OVERLAY
+================================ */
+
+.gift-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(39, 34, 30, 0.48);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: overlayAppear 0.4s ease both;
+}
+
+@keyframes overlayAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ================================
+   POPUP CARD
+================================ */
+
+.gift-modal {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 34px 22px 25px;
+  text-align: center;
+
+  background: linear-gradient(
+    145deg,
+    #fcf9f4,
+    #f0e8df
+  );
+
+  border: 1px solid #d9c4a9;
+  box-shadow: 0 25px 65px rgba(30, 25, 20, 0.25);
+
+  animation: modalAppear 0.65s
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.gift-modal::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(190, 160, 125, 0.45);
+  pointer-events: none;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Close Button */
+
+.gift-modal-close {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #8b7969;
+  font-size: 27px;
+  font-weight: 300;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.gift-modal-close:hover {
+  transform: rotate(90deg);
+}
+
+
+/* Popup Heading */
+
+.gift-modal-decoration {
+  color: #b99a73;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.gift-modal h3 {
+  margin: 8px 0 12px;
+  font-family: Georgia, serif;
+  font-size: 29px;
+  font-style: italic;
+  font-weight: 400;
+  color: #526b83;
+}
+
+.gift-modal-message {
+  max-width: 275px;
+  margin: 0 auto 25px;
+  color: #8492a0;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ================================
+   AMOUNT SELECTION
+================================ */
+
+.gift-amounts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.gift-amount {
+  min-height: 45px;
+  border: 1px solid #d9c9b7;
+  background: rgba(255, 255, 255, 0.4);
+  color: #718398;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gift-amount:hover {
+  border-color: #74869a;
+  transform: translateY(-2px);
+}
+
+.gift-amount.active {
+  background: #687e94;
+  border-color: #687e94;
+  color: #fff;
+}
+
+
+/* Custom Amount */
+
+.gift-custom {
+  margin-top: 23px;
+  text-align: left;
+}
+
+.gift-custom label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #a58a70;
+  font-weight: 600;
+}
+
+.gift-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #cdbba6;
+  padding: 9px 4px;
+  color: #657b91;
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+.gift-input input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #526b83;
+  font-family: Georgia, serif;
+  font-size: 16px;
+}
+
+.gift-input input::-webkit-inner-spin-button,
+.gift-input input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.gift-input input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+/* Selected Total */
+
+.gift-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 23px;
+  padding: 14px 0;
+  border-top: 1px solid #dfd1c2;
+  border-bottom: 1px solid #dfd1c2;
+  color: #8492a0;
+  font-size: 13px;
+}
+
+.gift-total strong {
+  color: #526b83;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+}
+
+
+/* ================================
+   PAYMENT BUTTON
+================================ */
+
+.gift-pay-button {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 20px;
+  border: 1px solid #74869a;
+  background: #657b91;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.gift-pay-button:not(:disabled):hover {
+  background: #4e657d;
+  box-shadow: 0 7px 18px rgba(70, 85, 105, 0.2);
+  transform: translateY(-2px);
+}
+
+.gift-pay-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gift-note {
+  margin: 12px 0 0;
+  font-size: 10px;
+  color: #9a8b7d;
+}
+
+.gift-modal-footer {
+  margin: 35px 0 0;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #a58a70;
+}
+
+
+/* ================================
+   SMALL SCREEN
+================================ */
+
+@media (max-width: 380px) {
+  .gift-modal {
+    padding: 30px 17px 22px;
+  }
+
+  .gift-modal h3 {
+    font-size: 26px;
+  }
+
+  .gift-amount {
+    font-size: 14px;
+  }
+
+  .gift-modal-message {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift-modal,
+  .gift-modal-overlay,
+  .gift-main-content {
+    animation: none;
+  }
+
+  .gift-open-button,
+  .gift-amount,
+  .gift-pay-button {
+    transition: none;
+  }
+}
+
+
+/* ================================
+   QR PAYMENT FALLBACK BUTTON
+================================ */
+
+.gift-qr-fallback {
+  display: block;
+  width: 100%;
+  margin-top: 13px;
+  padding: 12px;
+  border: 1px solid #cdbba6;
+  background: transparent;
+  color: #657b91;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gift-qr-fallback:hover:not(:disabled) {
+  background: rgba(101, 123, 145, 0.08);
+  border-color: #74869a;
+}
+
+.gift-qr-fallback:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ================================
+   QR PAYMENT VIEW
+================================ */
+
+.gift-qr-view {
+  animation: qrAppear 0.55s
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes qrAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.gift-qr-container {
+  width: fit-content;
+  margin: 22px auto;
+  padding: 13px;
+  background: #ffffff;
+  border: 1px solid #ddcbb7;
+  box-shadow: 0 8px 22px rgba(70, 60, 45, 0.09);
+}
+
+.gift-qr-container svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.gift-qr-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 18px 0;
+  padding: 15px 10px;
+  border-top: 1px solid #dfd1c2;
+  border-bottom: 1px solid #dfd1c2;
+  color: #8492a0;
+  font-size: 12px;
+}
+
+.gift-qr-amount strong {
+  color: #526b83;
+  font-family: Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.gift-qr-account {
+  color: #718398;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  margin: 12px 0;
+}
+
+/* QR responsive sizing */
+
+@media (max-width: 380px) {
+  .gift-qr-container {
+    padding: 9px;
+  }
+
+  .gift-qr-container svg {
+    width: 170px;
+    height: 170px;
+  }
+}

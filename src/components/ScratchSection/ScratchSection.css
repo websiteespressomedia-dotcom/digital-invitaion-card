@@ -1,11 +1,11 @@
 /* Ivory pearl page; the scratch panel is the arch. Frame/florals come from Ornaments.css */
-.scratch-section {
-  color: #6f5947;
+.scratch-section.card-page {
+  color: #657b91;
   background:
-    radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.98), transparent 55%),
-    radial-gradient(ellipse at 0% 100%, rgba(240, 214, 220, 0.45), transparent 50%),
-    radial-gradient(ellipse at 100% 0%, rgba(206, 222, 232, 0.4), transparent 45%),
-    linear-gradient(150deg, #f8f2e9 0%, #eee5d9 55%, #e4d7c8 100%);
+    radial-gradient(ellipse at 50% 10%, rgba(255,255,255,.98), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(205,216,202,.34), transparent 48%),
+    radial-gradient(ellipse at 100% 0%, rgba(222,230,233,.34), transparent 45%),
+    linear-gradient(150deg, #faf7f0 0%, #f0ece3 55%, #e7e9e1 100%);
 }
 
 .scratch-section__frame {
@@ -34,7 +34,7 @@
 
 .scratch-section__title {
   margin: 0;
-  color: #705744;
+  color: #61788f;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(30px, 8.4vw, 40px);
   font-style: italic;
@@ -45,7 +45,7 @@
 .scratch-section__description {
   max-width: 250px;
   margin: 2px 0 0;
-  color: #8d7764;
+  color: #8794a0;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 13px;
   line-height: 1.6;
@@ -53,7 +53,7 @@
 
 .scratch-section__footer {
   margin: 0;
-  color: #a28b74;
+  color: #9b8c78;
   font-family: Arial, sans-serif;
   font-size: 7px;
   letter-spacing: 0.22em;

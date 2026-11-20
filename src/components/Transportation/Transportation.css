@@ -1,0 +1,375 @@
+/* Demo-inspired Transportation: pearlescent surround + one calm paper insert. */
+
+.transportation {
+  --travel-ink: #657b91;
+  --travel-muted: #8b98a4;
+  --travel-gold: #b99b77;
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 720px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px 14px;
+  color: var(--travel-ink);
+  background:
+    radial-gradient(ellipse at 16% 10%, rgba(255,255,255,.98), transparent 34%),
+    radial-gradient(ellipse at 88% 18%, rgba(214,224,229,.48), transparent 38%),
+    radial-gradient(ellipse at 20% 82%, rgba(234,219,201,.5), transparent 42%),
+    radial-gradient(ellipse at 88% 88%, rgba(205,218,224,.42), transparent 40%),
+    linear-gradient(135deg, #f8f4ec 0%, #eae5dc 46%, #f7f2e9 100%);
+  isolation: isolate;
+  scroll-snap-align: start;
+}
+
+/* Soft mother-of-pearl veins around the paper insert. */
+.transportation__pearl-glow {
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 23% 31%, transparent 0 18%, rgba(255,255,255,.42) 18.2%, transparent 19.2%),
+    radial-gradient(ellipse at 76% 62%, transparent 0 23%, rgba(255,255,255,.35) 23.2%, transparent 24.1%),
+    repeating-linear-gradient(
+      128deg,
+      transparent 0 44px,
+      rgba(255,255,255,.09) 45px,
+      transparent 47px 86px
+    );
+  opacity: .8;
+  pointer-events: none;
+}
+
+/* One central textured paper panel, like the reference invitation. */
+.transportation__paper {
+  position: relative;
+  display: flex;
+  width: min(100%, 340px);
+  min-height: 660px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 27px 23px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(192, 174, 150, .35);
+  background:
+    radial-gradient(ellipse at 18% 14%, rgba(255,255,255,.96), transparent 42%),
+    radial-gradient(ellipse at 82% 76%, rgba(236,229,216,.38), transparent 42%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(133,118,97,.018) 0,
+      rgba(133,118,97,.018) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    linear-gradient(145deg, #fbf8f1 0%, #f6f1e8 58%, #f1eadf 100%);
+  box-shadow:
+    0 13px 34px rgba(89, 81, 70, .12),
+    0 2px 7px rgba(89, 81, 70, .06),
+    inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+/* Very fine internal paper border. */
+.transportation__paper-border {
+  position: absolute;
+  z-index: 0;
+  inset: 8px;
+  border: 1px solid rgba(178, 151, 119, .24);
+  pointer-events: none;
+}
+
+.transportation__paper-border::after {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255,255,255,.72);
+  content: '';
+}
+
+/* Postage illustration sits above the title, like the reference. */
+.transportation__artwork {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  height: 178px;
+  flex: 0 0 178px;
+  place-items: center;
+  margin: 0 0 2px;
+}
+
+.transportation__stamp {
+  display: block;
+  width: min(100%, 285px);
+  height: 174px;
+  overflow: visible;
+  filter: drop-shadow(0 4px 5px rgba(79,96,111,.08));
+  animation: transportation-stamp-drift 7s ease-in-out infinite;
+}
+
+.transportation__postmark-line {
+  opacity: .72;
+}
+
+@keyframes transportation-stamp-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Heading uses an elegant, calligraphic serif fallback stack. */
+.transportation__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  text-align: center;
+}
+
+.transportation__eyebrow {
+  margin: 0 0 4px;
+  color: #9f896f;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .25em;
+}
+
+.transportation__title {
+  margin: 0;
+  color: #617a93;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: clamp(36px, 9vw, 45px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  text-align: center;
+}
+
+.transportation__venue {
+  margin-top: 7px;
+  color: #929daa;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  letter-spacing: .17em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Quiet centered paragraphs — no separate information cards. */
+.transportation__copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  color: #8493a1;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.transportation__copy p {
+  margin: 0;
+}
+
+.transportation__copy--intro {
+  max-width: 275px;
+  margin-top: 23px;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.transportation__copy--pickup {
+  display: grid;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.transportation__copy--pickup p:first-child {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+}
+
+.transportation__copy-label {
+  color: #a58d72;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .2em;
+}
+
+.transportation__copy--pickup strong {
+  color: #687f96;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.transportation__departure {
+  color: #98836a;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 10px;
+  font-style: italic;
+}
+
+.transportation__copy--pickup p + p {
+  padding-top: 10px;
+  border-top: 1px solid rgba(169,148,120,.25);
+}
+
+.transportation__copy--return {
+  max-width: 278px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(169,148,120,.22);
+  font-style: italic;
+}
+
+/* Minimal double-rule map link. */
+.transportation__button {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 218px);
+  min-height: 42px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 9px 14px;
+  border: 1px solid rgba(115, 137, 157, .58);
+  outline: 1px solid rgba(115, 137, 157, .22);
+  outline-offset: 4px;
+  background: rgba(255,255,255,.26);
+  color: #75899d;
+  font-family: Arial, sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: .23em;
+  text-decoration: none;
+  transition:
+    background 280ms ease,
+    color 280ms ease,
+    border-color 280ms ease,
+    transform 280ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.transportation__button svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 280ms ease;
+}
+
+.transportation__button:hover {
+  border-color: #71869a;
+  background: rgba(228,235,239,.66);
+  color: #526d84;
+  transform: translateY(-2px);
+}
+
+.transportation__button:hover svg {
+  transform: translate(2px,-2px);
+}
+
+.transportation__button:active {
+  transform: translateY(0);
+}
+
+.transportation__button:focus-visible {
+  outline: 2px solid #71869a;
+  outline-offset: 5px;
+}
+
+/* Responsive phone sizing */
+@media (max-height: 740px) {
+  .transportation {
+    min-height: 700px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .transportation__paper {
+    min-height: 650px;
+    padding-top: 22px;
+    padding-bottom: 23px;
+  }
+
+  .transportation__artwork {
+    height: 158px;
+    flex-basis: 158px;
+  }
+
+  .transportation__stamp {
+    height: 155px;
+  }
+
+  .transportation__copy--intro {
+    margin-top: 17px;
+  }
+
+  .transportation__copy--pickup {
+    margin-top: 13px;
+  }
+
+  .transportation__copy--return {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .transportation {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .transportation__paper {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .transportation__title {
+    font-size: 36px;
+  }
+
+  .transportation__copy {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transportation__stamp {
+    animation: none;
+  }
+
+  .transportation__button,
+  .transportation__button svg {
+    transition: none;
+  }
+}
+
+/* Remove the extra outer frame inherited from the shared card-page styling.
+   Keep the central paper panel and its fine inner stationery border. */
+.transportation.card-page {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.transportation.card-page::before,
+.transportation.card-page::after {
+  content: none !important;
+  display: none !important;
+}

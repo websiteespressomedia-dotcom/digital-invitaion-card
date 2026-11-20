@@ -1,5 +1,11 @@
 :root {
-  font-family: Georgia, 'Times New Roman', serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: Arial, Helvetica, sans-serif;
+  --color-ink: #60768d;
+  --color-muted: #8794a0;
+  --color-champagne: #b99a73;
+
+  font-family: var(--font-display);
   color: #46372f;
   background: #f6f1e9;
   font-synthesis: none;
